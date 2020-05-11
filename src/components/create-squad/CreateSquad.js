@@ -65,7 +65,7 @@ export default function CreateSquad() {
 
   return (
     <>
-      <Dialog fullScreen open={open} onClose={handleClose}>
+      <Dialog fullScreen open={open ? true : false} onClose={handleClose}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <AppBar className={classes.appBar}>
             <Toolbar>
@@ -91,7 +91,7 @@ export default function CreateSquad() {
               <Grid item xs={4}>
                 <TextField
                   id="standard-basic"
-                  error={errors.name}
+                  error={errors?.name ? true : false}
                   helperText={errors.name?.message}
                   name="name"
                   inputRef={register({
@@ -112,7 +112,7 @@ export default function CreateSquad() {
                 <TextField
                   id="standard-basic"
                   name="description"
-                  error={errors.description}
+                  error={errors.description ? true : false}
                   helperText={errors.description?.message}
                   inputRef={register({
                     required: {

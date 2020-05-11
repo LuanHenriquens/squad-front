@@ -1,26 +1,27 @@
 import {
   STATUS_MODAL,
   UPDATED_DATA,
-  UPDATE_SQUAD,
-} from "../actions/squadAction";
+  LIST_MEMBER,
+} from "../actions/memberAction";
 
 const initialState = {
-  squadModal: false,
   updated: false,
   squad: null,
+  squadToCreate: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case STATUS_MODAL:
       return {
-        squadModal: action.statusModal,
+        squadToCreate: action.squadToCreate,
       };
     case UPDATED_DATA:
       return {
+        ...state,
         updated: action.updated,
       };
-    case UPDATE_SQUAD:
+    case LIST_MEMBER:
       return {
         squad: action.squad,
       };
