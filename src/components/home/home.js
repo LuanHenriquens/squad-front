@@ -17,8 +17,10 @@ import CardSquad from "../card-squad/CardSquad.js";
 import AddIcon from "@material-ui/icons/Add";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSquads, getSquadByName } from "../../services/squad.service.js";
-import { squadStatusScreenOfCreate } from "../../redux/actions/squadAction"
+import { squadStatusScreenOfCreate } from "../../redux/actions/squadAction";
 import CreateSquad from "../create-squad/CreateSquad.js";
+import UpdateSquad from "../update-squad/UpdateSquad";
+import MemberList from "../member-list/MemberList";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ export default function Home() {
   const [listSquad, setListSquad] = useState([]);
   const [searchSquad, setSearchSquad] = useState();
 
-  const updated = useSelector(store => store.squadReducer.updated);
+  const updated = useSelector((store) => store.squadReducer.updated);
 
   useEffect(() => {
     if (searchSquad)
@@ -94,9 +96,14 @@ export default function Home() {
                 </IconButton>
               </Paper>
             </Grid>
-            <Fab color="primary" className={classes.fab} aria-label="add" onClick={() => {
-              squadStatusScreenOfCreate(dispatch, true);
-            }}>
+            <Fab
+              color="primary"
+              className={classes.fab}
+              aria-label="add"
+              onClick={() => {
+                squadStatusScreenOfCreate(dispatch, true);
+              }}
+            >
               <AddIcon />
             </Fab>
           </Grid>
@@ -113,6 +120,8 @@ export default function Home() {
       </Container>
 
       <CreateSquad></CreateSquad>
+      <UpdateSquad></UpdateSquad>
+      <MemberList></MemberList>
     </>
-  )
+  );
 }

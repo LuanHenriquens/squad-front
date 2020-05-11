@@ -1,4 +1,4 @@
-import api from "./api.js"
+import api from "./api.js";
 
 export async function getAllSquads() {
   return await api.get("/squad/getall");
@@ -14,4 +14,8 @@ export async function createSquad(squad) {
 
 export async function deletedSquad(squadId) {
   return await api.delete(`/squad?id=${squadId}`);
+}
+
+export async function updateSquad(squad) {
+  return await api.put(`/squad`, squad);
 }
